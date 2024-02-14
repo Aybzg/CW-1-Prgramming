@@ -69,3 +69,9 @@ def home(self,frame):
         back_button.grid(pady=15)
         back_button.grid()
         d_f2.grid()
+
+def frame2_decode(self,d_f2):
+        d_f3 = Frame(root)
+        myfile = tkinter.filedialog.askopenfilename(filetypes = ([('png', '*.png'),('jpeg', '*.jpeg'),('jpg', '*.jpg'),('All Files', '*.*')]))
+        if not myfile:
+            messagebox.showerror("Error","You have selected nothing !")
