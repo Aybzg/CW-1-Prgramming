@@ -1,7 +1,8 @@
-import os
-import tkinter as tk 
-from tkinter import filedialog, messagebox
-from    PIL import Image
-import io 
-import base64
-import zlib
+from tkinter import *
+from tkinter import ttk
+import tkinter.filedialog
+from PIL import ImageTk
+from PIL import Image
+from tkinter import messagebox
+from io import BytesIO
+import  os
