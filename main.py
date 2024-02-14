@@ -47,3 +47,25 @@ class Stegno:
         b_decode.grid(row=3)
         ascii_art.grid(row=4,pady=10)
         ascii_art2.grid(row=5,pady=5)
+        
+def home(self,frame):
+            frame.destroy()
+            self.main(root)
+
+    def frame1_decode(self,f):
+        f.destroy()
+        d_f2 = Frame(root)
+        label_art = Label(d_f2, text='٩(^‿^)۶')
+        label_art.config(font=('courier',90))
+        label_art.grid(row =1,pady=50)
+        l1 = Label(d_f2, text='Select Image with Hidden text:')
+        l1.config(font=('courier',18))
+        l1.grid()
+        bws_button = Button(d_f2, text='Select', command=lambda :self.frame2_decode(d_f2))
+        bws_button.config(font=('courier',18))
+        bws_button.grid()
+        back_button = Button(d_f2, text='Cancel', command=lambda : Stegno.home(self,d_f2))
+        back_button.config(font=('courier',18))
+        back_button.grid(pady=15)
+        back_button.grid()
+        d_f2.grid()
