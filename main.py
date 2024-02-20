@@ -234,3 +234,27 @@ class Stegno:
                 y += 1
             else:
                 x += 1
+    def enc_fun(self,text_area,myimg):
+        data = text_area.get("1.0", "end-1c")
+        if (len(data) == 0):
+            messagebox.showinfo("Alert","Kindly enter text in TextBox")
+        else:
+            newimg = myimg.copy()
+            self.encode_enc(newimg, data)
+            my_file = BytesIO()
+            temp=os.path.splitext(os.path.basename(myimg.filename))[0]
+            newimg.save(tkinter.filedialog.asksaveasfilename(initialfile=temp,filetypes = ([('png', '*.png')]),defaultextension=".png"))
+            self.d_image_size = my_file.tell()
+            self.d_image_w,self.d_image_h = newimg.size
+            messagebox.showinfo("Success","Encoding Successful\nFile is saved as Image_with_hiddentext.png in the same directory")
+
+    def page3(self,frame):
+        frame.destroy()
+        self.main(root)
+
+root = Tk()
+
+o = Stegno()
+o.main(root)
+
+root.mainloop()
