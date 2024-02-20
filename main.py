@@ -117,7 +117,7 @@ class Stegno:
             data += chr(int(binstr, 2))
             if pixels[-1] % 2 != 0:
                 return data
-   def frame1_encode(self,f):
+    def frame1_encode(self,f):
         f.destroy()
         f2 = Frame(root)
         label_art = Label(f2, text='\'\(°Ω°)/\'')
