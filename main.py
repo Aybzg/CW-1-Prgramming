@@ -117,3 +117,54 @@ class Stegno:
             data += chr(int(binstr, 2))
             if pixels[-1] % 2 != 0:
                 return data
+   def frame1_encode(self,f):
+        f.destroy()
+        f2 = Frame(root)
+        label_art = Label(f2, text='\'\(°Ω°)/\'')
+        label_art.config(font=('courier',70))
+        label_art.grid(row =1,pady=50)
+        l1= Label(f2,text='Select the Image in which \nyou want to hide text :')
+        l1.config(font=('courier',18))
+        l1.grid()
+
+        bws_button = Button(f2,text='Select',command=lambda : self.frame2_encode(f2))
+        bws_button.config(font=('courier',18))
+        bws_button.grid()
+        back_button = Button(f2, text='Cancel', command=lambda : Stegno.home(self,f2))
+        back_button.config(font=('courier',18))
+        back_button.grid(pady=15)
+        back_button.grid()
+        f2.grid()
+
+
+    def frame2_encode(self,f2):
+        ep= Frame(root)
+        myfile = tkinter.filedialog.askopenfilename(filetypes = ([('png', '*.png'),('jpeg', '*.jpeg'),('jpg', '*.jpg'),('All Files', '*.*')]))
+        if not myfile:
+            messagebox.showerror("Error","You have selected nothing !")
+        else:
+            myimg = Image.open(myfile)
+            myimage = myimg.resize((300,200))
+            img = ImageTk.PhotoImage(myimage)
+            l3= Label(ep,text='Selected Image')
+            l3.config(font=('courier',18))
+            l3.grid()
+            panel = Label(ep, image=img)
+            panel.image = img
+            self.output_image_size = os.stat(myfile)
+            self.o_image_w, self.o_image_h = myimg.size
+            panel.grid()
+            l2 = Label(ep, text='Enter the message')
+            l2.config(font=('courier',18))
+            l2.grid(pady=15)
+            text_area = Text(ep, width=50, height=10)
+            text_area.grid()
+            encode_button = Button(ep, text='Cancel', command=lambda : Stegno.home(self,ep))
+            encode_button.config(font=('courier',11))
+            data = text_area.get("1.0", "end-1c")
+            back_button = Button(ep, text='Encode', command=lambda : [self.enc_fun(text_area,myimg),Stegno.home(self,ep)])
+            back_button.config(font=('courier',11))
+            back_button.grid(pady=15)
+            encode_button.grid()
+            ep.grid(row=1)
+            f2.destroy()
