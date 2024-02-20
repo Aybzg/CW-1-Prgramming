@@ -48,7 +48,7 @@ class Stegno:
         ascii_art.grid(row=4,pady=10)
         ascii_art2.grid(row=5,pady=5)
         
-def home(self,frame):
+    def home(self,frame):
             frame.destroy()
             self.main(root)
 
@@ -70,7 +70,7 @@ def home(self,frame):
         back_button.grid()
         d_f2.grid()
 
-def frame2_decode(self,d_f2):
+    def frame2_decode(self,d_f2):
         d_f3 = Frame(root)
         myfile = tkinter.filedialog.askopenfilename(filetypes = ([('png', '*.png'),('jpeg', '*.jpeg'),('jpg', '*.jpg'),('All Files', '*.*')]))
         if not myfile:
