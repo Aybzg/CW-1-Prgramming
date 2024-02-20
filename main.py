@@ -99,3 +99,21 @@ class Stegno:
             show_info.grid()
             d_f3.grid(row=1)
             d_f2.destroy()
+    def decode(self, image):
+        data = ''
+        imgdata = iter(image.getdata())
+
+        while (True):
+            pixels = [value for value in imgdata.__next__()[:3] +
+                      imgdata.__next__()[:3] +
+                      imgdata.__next__()[:3]]
+            binstr = ''
+            for i in pixels[:8]:
+                if i % 2 == 0:
+                    binstr += '0'
+                else:
+                    binstr += '1'
+
+            data += chr(int(binstr, 2))
+            if pixels[-1] % 2 != 0:
+                return data
